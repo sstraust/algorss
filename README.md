@@ -1,5 +1,7 @@
 # AlgoRSS
 
+AlgoRSS is currently in *development*. Many things are still incomplete. I am currently welcoming contributions.
+
 AlgoRSS is an **open source RSS reader** focused on **customizability** and **algorithmic transparency**. 
 
 You can use it on the website [here](https://tbd19201230912091209.com)
