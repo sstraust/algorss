@@ -45,7 +45,7 @@ This needs to run periodically (i.e. via a cronjob) to get the articles.
 ### Running Tests
 during project setup, run
 ```
-ln -sf hooks/pre-push .git/hooks/pre-push
+git config core.hooksPath ./hooks
 ```
 
 to install the pre-push hooks into your repo
