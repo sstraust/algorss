@@ -1,0 +1,54 @@
+* DONE Write Mongo Schema For News Articles, News Sources
+* DONE finish process-source-data so it's not a stub function
+-- for now we will assume that the feed is correct and parses correctly
+-- so now we just need:
+----- self_reported_name
+----- last_updated -- None
+----- description
+
+
+-- maybe the easiest way is to call
+---- process_feed -- with no_update = True
+---- and then if no_update = True
+---- it returns a _tuple_ with
+------- [feed_metadata, proposed_updates]
+------- and maybe also take additional_article_parsers
+------- as input
+ideally we want to grab this from the collect script in python
+so that all of the collection is in the same place
+
+* DONE Create a Simple Admin Panel for adding RSS Feeds to the DB
+* DONE Collect News Pulls From Table Defined In Webserver
+* TODO Think through a consistent naming schema for your mongo tables
+  honestly, I think this is ok as is, because you want the
+  web version of it to use javascript, which you want to come from JSON
+* TODO Write a unit test that takes a cached version of an RSS feed and its links
+you want mock data, so that you can write stable tests
+
+
+
+** P2
+* TODO Enforce Mongo Schema
+* TODO Think through what it means for users to add RSS feeds to the DB
+   how should feeds be updated?
+   what if the URL changes?
+   how do we make managing this easier?
+
+   maybe -- there's only one rss feed
+   the first person to create it gives it a unique name?
+
+
+   oooooh! maybe! you should never have an owner of a feed!
+   until someone specifically asks to be the admin for that feed!
+
+   and then they are responsible for making updates to it!
+
+   so I guess maybe instead of owner, you should have an "original author" field?
+
+* TODO Improve the add feed menu so it's good and nice to use
+
+* TODO Set last_updated field value in rssSourcesTable inside of process_feed
+
+** More Notes
+I think the next question is, can you deploy this in a _maintainable_
+and _scalable_ way

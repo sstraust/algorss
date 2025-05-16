@@ -1,0 +1,36 @@
+#!/bin/bash
+
+ORIGINAL_DIR=$(pwd)
+
+# Define paths
+PROJECT_ROOT="$(git rev-parse --show-toplevel)"
+PYTHON_DIR="$PROJECT_ROOT/python"
+
+echo "=== Running Pre-Push Checks ==="
+
+# Run Python tests
+{
+    echo "📊 Running Python tests..."
+    cd "$PYTHON_DIR" || { 
+        echo "ERROR: Could not change to Python directory at $PYTHON_DIR"
+        exit 1
+    }
+    
+    # Run pytest with summary output
+    python -m pytest -v tests/
+    PYTHON_TEST_RESULT=$?
+    
+    # Return to original directory regardless of test outcome
+    cd "$ORIGINAL_DIR"
+    
+    # Check Python test results
+    if [ $PYTHON_TEST_RESULT -ne 0 ]; then
+        echo "❌ Python tests failed!"
+        exit 1
+    else
+        echo "✅ Python tests passed!"
+    fi
+}
+
+echo "✨ All pre-push checks passed! Proceeding with push."
+exit 0

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Article Source",
+  "type": "object",
+  "required": [
+    "unique_id",
+    "display_name",
+    "self_reported_name",
+    "last_updated",
+    "description",
+    "url"
+  ],
+  "properties": {
+    "unique_id": {
+      "type": "string",
+      "description": "A unique identifier for the RSS feed source."
+    },
+    "display_name": {
+      "type": "string",
+      "description": "The human-friendly display name for the RSS feed source."
+    },
+    "self_reported_name": {
+      "type": "string",
+      "description": "The self-reported name provided by the source."
+    },
+    "last_updated": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "The date when the source was last updated."
+    },
+    "description": {
+      "type": "string",
+      "description": "A brief description of the RSS feed source."
+    },
+    "url": {
+      "type": "string",
+      "pattern": "^(http|https)://",
+      "description": "The URL where the RSS feed source can be found."
+    },
+    "owner_id": {
+      "type": "string",
+      "description": "The id of the person who owns this RSS feed"
+    },
+    "last_fetch_attempt": {
+      "type": "object",
+      "description": "Details about the last fetch attempt",
+      "properties": {
+        "num_fetched": {
+          "type": "integer",
+          "description": "Number of items fetched in the last attempt"
+        },
+        "last_attempt_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date of the last fetch attempt"
+        },
+        "last_attempt_result": {
+          "type": "string",
+          "description": "Result of the last fetch attempt"
+        }
+      },
+      "required": ["num_fetched", "last_attempt_date", "last_attempt_result"]
+    }
+  }
+}

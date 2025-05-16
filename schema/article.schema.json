@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Article",
+  "type": "object",
+  "required": [
+    "link",
+    "published_date",
+    "title",
+    "author",
+    "source_id",
+    "self_reported_feed_title"
+  ],
+  "properties": {
+    "link": {
+      "type": ["string", "null"],
+      "description": "The URL link to the article. Can be a string or null."
+    },
+    "published_date": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "The publication date of the article as a date-time string (ISO 8601), or null if not provided."
+    },
+    "title": {
+      "type": ["string", "null"],
+      "description": "The title of the article. Can be a string or null."
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "The description of the article, as described by the RSS feed."
+    },
+    "author": {
+      "type": ["string", "null"],
+      "description": "The author of the article. Can be a string or null."
+    },
+    "source_id": {
+      "type": "string",
+      "description": "The source identifier, stored as a unique string. REFERENCES unique_id field in article_source_schema."
+    },
+    "self_reported_feed_title": {
+      "type": "string",
+      "description": "The feed title provided by the source; defaults to 'Unknown' if not available."
+    }
+  }
+}
